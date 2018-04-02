@@ -1,0 +1,8 @@
+.hobbiesCard{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.card{
+  width:25%;
+}
