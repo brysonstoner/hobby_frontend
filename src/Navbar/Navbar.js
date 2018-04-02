@@ -49,6 +49,12 @@ class HobbiesNav extends Component {
   }
 
   render() {
+    var userMessage;
+    if(this.props.userLoggedIn){
+      userMessage = <div> You are logged in as: {this.props.user.username}</div>
+    } else {
+      userMessage = <div> Not Logged in </div>
+    }
     return (
       <div>
         <Navbar color="faded" light expand="md">
@@ -57,7 +63,7 @@ class HobbiesNav extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink >Not Logged In </NavLink>
+                <NavLink >{userMessage} </NavLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
@@ -80,4 +86,4 @@ class HobbiesNav extends Component {
   }
 }
 
-export default connect()(HobbiesNav)
+export default connect((state)=>(state.userReducer))(HobbiesNav)

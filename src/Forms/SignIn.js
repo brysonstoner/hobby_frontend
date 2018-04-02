@@ -25,9 +25,22 @@ class SignInModalBody extends Component {
   signIn() {
     axios.post('/signin', {
       username: this.state.username
-    }).then(()=>{
+    }).then((res)=>{
+      this.props.dispatch({
+        type:"signedInUser",
+        user:res.data
+      });
+      axios.post('/getHobbies', {
+        userId:res.data.id
+      }).then((res)=>{
+        this.props.dispatch({
+          type:"fetchedHobbies",
+          hobbies:res.data
+        });
+      });
+
       this.closeModal();
-    })
+    });
   }
 
   changeUserName(e) {
@@ -58,4 +71,4 @@ class SignInModalBody extends Component {
   }
 }
 
-export default connect((state) => (state.modalReducer))(SignInModalBody);
+export default connect((state) => (state.userReducer))(SignInModalBody);

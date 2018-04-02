@@ -11,12 +11,14 @@ class Hobbies extends Component {
   }
 
   render() {
-     let hobbies// = this.props.hobbyReducer.hobbies.map((h) => {
-    //   <tr>
-    //     <td>{h.name}</td>
-    //     <td>{h.skillLevel}</td>
-    //   </tr>
-    // });
+    let hobbies = this.props.hobbiesReducer.hobbies.map((h) => {
+      return (
+        <tr>
+          <td>{h.name}</td>
+          <td>{h.skill_level}</td>
+        </tr>
+      )
+    });
 
     return (
       <div>
@@ -28,7 +30,7 @@ class Hobbies extends Component {
             </tr>
           </thead>
           <tbody>
-            {hobbies}                        
+            {hobbies}
           </tbody>
         </Table>
       </div>

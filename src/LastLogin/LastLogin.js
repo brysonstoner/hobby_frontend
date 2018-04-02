@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {
    CardText
 } from 'reactstrap';
 
-export default class LastLogin extends Component {
+class LastLogin extends Component {
   render() {
     return (
       <div>
-        <CardText>Last Login:</CardText>
+        <CardText>Last Login:{this.props.user.last_login}</CardText>
       </div>
     )
   }
 }
+
+export default connect((state) => (state.userReducer))(LastLogin);
